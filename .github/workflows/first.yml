@@ -6,7 +6,7 @@ jobs:
   job1:
     name: First job
     runs-on: ubuntu-latest
-    setps:
+    steps:
     - name: Step one
       uses: actions/checkout@v2
     - name: step two
