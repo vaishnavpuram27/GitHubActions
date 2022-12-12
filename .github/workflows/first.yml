@@ -26,43 +26,23 @@ name: first_challenge
 on: push
 
 jobs:
-  job1:
-    name: First job
+  ubuntu:
     runs-on: ubuntu-latest
     steps:
-    - name: Step one
-      uses: actions/checkout@v2
-    - name: Step two
-      run: |
-        now = $(date)
-        echo "Current date: $now" 
-  job2:
-    name: Second job
+      run: date
+  windows:
     runs-on: windows-latest
     steps:
-    - name: Step one
-      uses: actions/checkout@v2
-    - name: Step two
-      run: "Get-Date -DisplayHint Date"
-  job3:
-    name: Third job
+      run: date
+  macos:
     runs-on: macos-latest
     steps:
-    - name: Step one
-      uses: actions/checkout@v2
-    - name: Step two
-      run: |
-        now = $(date)
-        echo "Current date: $now" 
-  job4:
-    name: Fourth job
+      run: date
+  depends:
     runs-on: windows-latest
-    needs: [job1,job2,job3]
+    needs: [ubuntu,windows,macos]
     steps:
-    - name: Step one
-      uses: actions/checkout@v2
-    - name: Step two
-      run: "Get-Date -DisplayHint Date"
+      run: date
   
     
         
