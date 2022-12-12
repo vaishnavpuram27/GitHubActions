@@ -1,4 +1,27 @@
-name: first
+# name: first
+
+# on: push
+
+# jobs:
+#   job1:
+#     name: First job
+#     runs-on: ubuntu-latest
+#     steps:
+#     - name: Step one
+#       uses: actions/checkout@v2
+#     - name: step two
+#       run: env | sort
+      
+#   job2:
+#     name: Second job
+#     runs-on: windows-latest
+#     steps:
+#     - name: Step one
+#       uses: actions/checkout@v2
+#     - name: step two
+#       run: "Get-ChildItem Env: | Sort-Object Name"
+
+name: first_challenge
 
 on: push
 
@@ -9,14 +32,37 @@ jobs:
     steps:
     - name: Step one
       uses: actions/checkout@v2
-    - name: step two
-      run: env | sort
-      
+    - name: Step two
+      run: |
+        now = $(date)
+        echo "Current date: $now" 
   job2:
     name: Second job
     runs-on: windows-latest
     steps:
     - name: Step one
       uses: actions/checkout@v2
-    - name: step two
-      run: "Get-ChildItem Env: | Sort-Object Name"
+    - name: Step two
+      run: "Get-Date -DisplayHint Date"
+  job3:
+    name: Third job
+    runs-on: macos-latest
+    steps:
+    - name: Step one
+      uses: actions/checkout@v2
+    - name: Step two
+      run: |
+        now = $(date)
+        echo "Current date: $now" 
+  job4:
+    name: Fourth job
+    runs-on: windows-latest
+    needs: [job1,job2,job3]
+    steps:
+    - name: Step one
+      uses: actions/checkout@v2
+    - name: Step two
+      run: "Get-Date -DisplayHint Date"
+  
+    
+        
