@@ -1,0 +1,66 @@
+# name: first
+
+# on: push
+
+# jobs:
+#   job1:
+#     name: First job
+#     runs-on: ubuntu-latest
+#     steps:
+#     - name: Step one
+#       uses: actions/checkout@v2
+#     - name: step two
+#       run: env | sort
+      
+#   job2:
+#     name: Second job
+#     runs-on: windows-latest
+#     steps:
+#     - name: Step one
+#       uses: actions/checkout@v2
+#     - name: step two
+#       run: "Get-ChildItem Env: | Sort-Object Name"
+
+# name: first_challenge
+
+# on: push
+
+# jobs:
+#   ubuntu:
+#     runs-on: ubuntu-latest
+#     steps:
+#     - run: date
+#   windows:
+#     runs-on: windows-latest
+#     steps:
+#     - run: date
+#   macos:
+#     runs-on: macos-latest
+#     steps:
+#     - run: date
+#   depends:
+#     needs: [ubuntu,windows,macos]
+#     runs-on: windows-latest
+#     steps:
+#     - run: date
+
+name : second_challenge Artifact
+
+on: [push]
+
+env:
+  ARTIFACT_NAME: myartifact
+
+jobs:
+  main:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out the code
+        uses: actions/checkout@v2
+      - name: Upload the Artifact
+        uses: actions/upload-artifact@v2
+        with:
+          name: ${{ env.ARTIFACT_NAME }}
+          path: .
+    
+        
